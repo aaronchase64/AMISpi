@@ -1,0 +1,29 @@
+# Raspberry Pi / CasaOS deployment: web test on port 8003.
+# Simulation is set in config/config.toml, so it can later be disabled in the UI.
+# Modbus is intentionally NOT published during simulation.
+name: amis-pi
+services:
+  amis:
+    build:
+      context: .
+      target: production
+    image: amis-pi:local
+    container_name: amis-pi
+    restart: unless-stopped
+    devices:
+      - ${AMIS_UART_DEVICE:-/dev/ttyAMA0}:/dev/ttyAMA0
+    ports:
+      - "8003:8080"
+    volumes:
+      - ./config:/config
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    stop_grace_period: 20s
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"

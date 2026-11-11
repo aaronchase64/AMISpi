@@ -1,0 +1,41 @@
+# Beim ersten Start kann die Datei fehlen; Einstellungen werden in der Web-UI gespeichert.
+# MQTT erst nach Eintragen des Brokers aktivieren.
+[meter]
+key = ""
+port = "/dev/ttyAMA0"
+simulate = false
+stale_after = 15
+serialnumber = ""
+
+[mqtt]
+enabled = false
+host = "localhost"
+port = 1883
+username = ""
+password = ""
+tls = false
+tls_insecure = false
+client_id = "amis-pi"
+topic = "amis/out"
+status_topic = "amis/status"
+interval = 30
+qos = 0
+retain = false
+key_style = "dots"
+saldo_offset = 0
+saldo_invert = false
+
+[modbus]
+enabled = true
+host = "0.0.0.0"
+port = 502
+
+[web]
+enabled = true
+host = "0.0.0.0"
+port = 8080
+username = "admin"
+password = ""
+
+[log]
+level = "INFO"

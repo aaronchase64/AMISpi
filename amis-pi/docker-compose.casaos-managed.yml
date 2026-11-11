@@ -1,0 +1,56 @@
+name: amis-pi
+services:
+    amis:
+        container_name: amis-pi
+        devices:
+            - /dev/ttyAMA0:/dev/ttyAMA0
+        image: amis-pi:local
+        labels:
+            icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/cloudflare-pages.svg
+        logging:
+            driver: json-file
+            options:
+                max-file: "3"
+                max-size: 5m
+        networks:
+            default: null
+        ports:
+            - target: 502
+              published: "502"
+              protocol: tcp
+            - mode: ingress
+              target: 8080
+              published: "8003"
+              protocol: tcp
+        read_only: true
+        restart: unless-stopped
+        security_opt:
+            - no-new-privileges:true
+        stop_grace_period: 20s
+        tmpfs:
+            - /tmp
+        volumes:
+            - type: bind
+              source: /mnt/USB/amis-pi/config
+              target: /config
+              bind:
+                create_host_path: true
+networks:
+    default:
+        name: amis-pi_default
+x-casaos:
+    architectures:
+        - arm64
+    description:
+        de_de: AMIS Smartmeter Lesekopf
+        en_us: AMIS smart meter reader
+    icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/cloudflare-pages.svg
+    index: /
+    is_uncontrolled: false
+    main: amis
+    port_map: "8003"
+    scheme: http
+    store_app_id: amis-pi
+    title:
+        de_de: AMIS Pi
+        en_us: AMIS Pi

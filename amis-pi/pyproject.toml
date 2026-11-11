@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amis-pi"
+version = "0.2.0"
+description = "AMIS GPIO UART reader with MQTT, web UI and Fronius Modbus/TCP"
+requires-python = ">=3.11"
+dependencies = ["paho-mqtt==2.1.0"]
+license = {text = "GPL-2.0-or-later"}
+
+[project.optional-dependencies]
+test = ["cryptography>=43"]
+
+[project.scripts]
+amis-pi = "amis_pi.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["amis_pi*"]
