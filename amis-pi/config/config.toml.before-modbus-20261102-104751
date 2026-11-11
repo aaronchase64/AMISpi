@@ -1,0 +1,39 @@
+[meter]
+key = "E9427165FF8BFFC61B703CB380AA8678"
+port = "/dev/ttyAMA0"
+simulate = false
+stale_after = 5
+serialnumber = ""
+
+[mqtt]
+enabled = false
+host = "192.168.1.88"
+port = 1883
+username = "openhab"
+password = "Nicolai64"
+tls = false
+tls_insecure = false
+client_id = "amis-pi"
+topic = "amis/out"
+status_topic = "amis/status"
+interval = 28
+qos = 0
+retain = false
+key_style = "dots"
+saldo_offset = 0
+saldo_invert = false
+
+[modbus]
+enabled = true
+host = "192.168.1.90"
+port = 502
+
+[web]
+enabled = true
+host = "0.0.0.0"
+port = 8080
+username = "admin"
+password = ""
+
+[log]
+level = "INFO"
