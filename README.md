@@ -3,7 +3,7 @@
 This is a docker created from
 https://github.com/mgerhard74/amis_smartmeter_reader
 to be used on a Raspberry Pi with GPIO-connected IR reader
-(created by AI)
+(created by AI) 
 
 Die Raspberry-Pi-Variante liest Siemens TD-3511/TD-3512 (NetzOÖ AMIS) am
 GPIO-UART und stellt die Werte über Weboberfläche, MQTT und Fronius-Modbus/TCP bereit.
